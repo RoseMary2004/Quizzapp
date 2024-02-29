@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizzapp/questions.dart';
-import 'package:quizzapp/saval.dart';
+import 'package:quizzapp/ques.dart';
 
 class Questions extends StatefulWidget {
   const Questions({super.key});
@@ -18,13 +18,28 @@ class _QuestionsState extends State<Questions> {
 
   }
   List Questions=[
-    Quiz(qus: 'Does nandana have a brain ?', ans: false),
+    Quiz(qus: 'colorblind people can see color', ans: false),
     Quiz(qus: 'Does nandana eat a lot of food', ans: true),
-    Quiz(qus: 'Did nandana gain weight', ans: false),
+    Quiz(qus: 'color of the teeth black', ans: false),
     Quiz(qus: 'Does nandana have an iphone', ans: false),
-    Quiz(qus: 'Is nandana a drug addict', ans: false),
-    Quiz(qus: 'Does nandana dance well', ans: true),
+    Quiz(qus: 'Is fish a non veg', ans: false),
+    Quiz(qus: 'Is apple a fruit', ans: true),
   ];
+  void ans(bool check){
+
+    print ('check');
+
+  }
+  void answer(bool check)
+  {
+    if(check==Questions[index].ans)
+    result='correct answer';
+    else{
+      result='wrong answer';
+
+  }
+  }
+  String result="correct answer";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,12 +58,16 @@ class _QuestionsState extends State<Questions> {
             ),
           ),
           TextButton(onPressed: (){setState(() {
+            answer(true);
             nextQus();
-          });}, child: Text('true')),
+          });},
+              child: Text('true')),
           TextButton(onPressed: (){setState(() {
+            answer(false);
             nextQus();
 
           });}, child: Text('false')),
+          Text(result),
         ],
       ),
     );
